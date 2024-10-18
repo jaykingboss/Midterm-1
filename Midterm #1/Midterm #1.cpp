@@ -143,18 +143,20 @@ public:
     }
 
 
+    // Add a new node at the front of the list
     void push_front(int v) {
         Node* newNode = new Node(v);
 
         if (!head)
-            head = tail = newNode;  
+            head = tail = newNode;  // If the list is empty, newNode is both head and tail
         else {
-            newNode->next = head;   
-            head->prev = newNode;   
-            head = newNode;        
+            newNode->next = head;   // Link newNode to the old head
+            head->prev = newNode;   // Link the old head's prev to newNode
+            head = newNode;         // Update head to newNode
         }
     }
 
+    // Remove the first node 
     void pop_front() {
         if (!head) {
             cout << "List is empty." << endl;
@@ -164,16 +166,16 @@ public:
         Node* temp = head;
 
         if (head->next) {
-            head = head->next;      
-            head->prev = nullptr;  
+            head = head->next;      // Move head to the next node
+            head->prev = nullptr;   // Update the new head's prev pointer to null
         }
         else
-            head = tail = nullptr;  
+            head = tail = nullptr;  // If it was the only node, the list is now empty
 
         delete temp;  // Free memory
     }
 
-    
+    // Remove the last node
     void pop_back() {
         if (!tail) {
             cout << "List is empty." << endl;
@@ -183,23 +185,25 @@ public:
         Node* temp = tail;
 
         if (tail->prev) {
-            tail = tail->prev;      
-            tail->next = nullptr;   
+            tail = tail->prev;      // Moves tail to the previous node
+            tail->next = nullptr;   // Update the new tail's next pointer to null
         }
         else
-            head = tail = nullptr;  
+            head = tail = nullptr;  // If it was the only node, the list is now empty
 
         delete temp;  // Free memory
     }
 
+    // Destructor to clean up the list and free memory
     ~DoublyLinkedList() {
         while (head) {
             Node* temp = head;
             head = head->next;
-            delete temp;  
+            delete temp;  // Free each node
         }
     }
 
+    // Print the list from head to tail
     void print() {
         Node* current = head;
 
@@ -209,13 +213,14 @@ public:
         }
 
         while (current) {
-            cout << current->data << " ";  
-            current = current->next;      
+            cout << current->data << " ";  // Output the data for each node
+            current = current->next;       // Move to the next node
         }
 
         cout << endl;
     }
 
+    // Print the list from tail to head
     void print_reverse() {
         Node* current = tail;
 
@@ -225,11 +230,22 @@ public:
         }
 
         while (current) {
-            cout << current->data << " ";  
-            current = current->prev;       
+            cout << current->data << " ";  // Output the data for each node
+            current = current->prev;       // Move to the previous node
         }
 
         cout << endl;
+    }
+    void every_other_element() {
+        Node* current = head;
+        bool skip = false;
+    
+        while(current){
+        
+        
+            }
+    
+    
     }
 };
 
