@@ -23,36 +23,40 @@ private:
     Node* tail;// Pointer to the last node
 
 public:
-    DoublyLinkedList() { head = nullptr; tail = nullptr; }
-
+    // Initializes an empty list
+    DoublyLinkedList() { head = nullptr; tail = nullptr; } // When there's no list, head is null and tail is null when the list is empty
+    // Inserts a new node after a certain position
     void insert_after(int value, int position) {
+        // Check if position is correct (greater than or equal to 0)
         if (position < 0) {
             cout << "Position must be >= 0." << endl;
             return;
         }
 
-        Node* newNode = new Node(value);
+        Node* newNode = new Node(value);// Creates a new node with the certain value
+
         if (!head) {
-            head = tail = newNode;
+            head = tail = newNode; // If the list is empty, make this the first node
             return;
         }
-
+        // Move temp to the position where the new node will be
         Node* temp = head;
         for (int i = 0; i < position && temp; ++i)
             temp = temp->next;
-
+        // If the position is not within the values then the node will not be inserted
         if (!temp) {
             cout << "Position exceeds list size. Node not inserted.\n";
             delete newNode;
             return;
         }
-
+        // Change pointers to insert newNode after the temp
         newNode->next = temp->next;
         newNode->prev = temp;
+        // If there's a node after temp, link its prev to newNode
         if (temp->next)
             temp->next->prev = newNode;
         else
-            tail = newNode;
+            tail = newNode;// If temp was the last node it will update tail
         temp->next = newNode;
     }
 
