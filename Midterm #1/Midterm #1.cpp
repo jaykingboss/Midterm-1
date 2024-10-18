@@ -236,22 +236,38 @@ public:
 
         cout << endl;
     }
+    // Used to print every other element, starting from the first one
     void every_other_element() {
         Node* current = head;
-        bool skip = false;
-    
-        while(current){
-        
-        
+        bool skip = false;  // Decides whether to print the current node or skip it
+
+        while (current) {
+            if (!skip) {
+                cout << current->data << " ";  // Print the current node's data
             }
-    
-    
+            skip = !skip;  // skip for the next node
+            current = current->next;  // Move to the next node
+        }
+
+        cout << endl;
     }
 };
 
 int main() {
-    cout << MIN_NR + MIN_LS + MAX_NR + MAX_LS;  // dummy statement to avoid compiler warning
+    DoublyLinkedList list;
 
+    // Adding some values to the list
+    list.push_back(1);
+    list.push_back(2);
+    list.push_back(3);
+    list.push_back(4);
+    list.push_back(5);
+
+    cout << "Full list: ";
+    list.print();  // Print all 
+
+    cout << "Every other element: ";
+    list.every_other_element();  // Print every other element
 
     return 0;
 }
