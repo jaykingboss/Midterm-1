@@ -1,16 +1,17 @@
 // COMSC-210 | Midterm #1 | Jayson Yang
 // IDE used: Visual Studio 
 #include <iostream>
-using namespace std;
-
+using namespace std;// This allows us to avoid typing std:: before functions like cout.
+// constants for later use in the main function
 const int MIN_NR = 10, MAX_NR = 99, MIN_LS = 5, MAX_LS = 20;
-
+// Our class for the doubly linked list
 class DoublyLinkedList {
 private:
     struct Node {
-        int data;
-        Node* prev;
-        Node* next;
+        int data; // This holds the value for each node
+        Node* prev; // Pointer to the previous node in the list
+        Node* next;// Pointer to the next node in the list
+        // Constructor to make a new node. If there is no prev/next, it will defaults to nullptr
         Node(int val, Node* p = nullptr, Node* n = nullptr) {
             data = val;
             prev = p;
@@ -18,8 +19,8 @@ private:
         }
     };
 
-    Node* head;
-    Node* tail;
+    Node* head;// Pointer to the first node
+    Node* tail;// Pointer to the last node
 
 public:
     DoublyLinkedList() { head = nullptr; tail = nullptr; }
