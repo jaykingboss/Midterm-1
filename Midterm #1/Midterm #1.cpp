@@ -2,6 +2,6 @@
 
 int main()
 {
-    std::cout << "tesdsfrgaefbaeetgetgt push!\n";
+    std::cout << "sbc push!\n";
 }
 
